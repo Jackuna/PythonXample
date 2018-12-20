@@ -1,3 +1,8 @@
+# PyPass :  A python script to generate random and strong passwords. 
+# Generate passwords as per your desired length
+# Generate as many password you want in a single run
+
+
 from random import choice
 
 # User defined Inputs
