@@ -91,6 +91,7 @@ def parse_api_status():
         else:
 
             print(select.upper(), "Live API Status : ", ApiDict[select][0])
+            print("Last Updated on : ", ApiDict[select][5])
         
     except: 
         sys.exit()
