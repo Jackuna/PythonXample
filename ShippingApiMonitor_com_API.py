@@ -1,3 +1,17 @@
+# ----------------------------------------------------------------------------------------------------------------------------  #
+# ShippingApiMonitor_com_API : An example of Python webscraping for https://www.shippingapimonitor.com/ using Beautiful Soap
+#
+# This script takes input messages to encrypt and then using the same key you 
+# can decrypt the message
+# https://www.shippingapimonitor.com/ Site shows status for different carrier's API status on webUI, we are fetching the same
+# on our CLI via dictionary.
+#
+#
+# In case to retrive all carrier's API status, comment Line :101 #carrier_options() and uncomment Line :84 #print(ApiDict)
+#
+# Author : Jackuna
+# ----------------------------------------------------------------------------------------------------------------------------  #
+
 from bs4 import BeautifulSoup
 import requests
 import re
@@ -67,7 +81,8 @@ def parse_api_status():
         for key, value in zip(CarrierList,CarrierStatus):
             ApiDict.update({key:value})
 
-    print(ApiDict)
+    #print(ApiDict)
+    print()
 
     try:
         if len(select)==0:
@@ -83,7 +98,7 @@ def parse_api_status():
 
 
 run = parse_webpage()
-#carrier_options()
+carrier_options()
 parse_api_status()
     
 
