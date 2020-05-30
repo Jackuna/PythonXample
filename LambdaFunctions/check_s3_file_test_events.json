@@ -1,0 +1,9 @@
+// AWS Lambda check_s3_file.py test events
+
+// Below one in case we want to check existence of a file manually
+{
+  "bucket_sub_directory": "False",
+  "file_suffix": "demo-file-A.txt",
+  "bucket_name": "cyberkeeda-bucket-a",
+  "fileType": "random"
+}
