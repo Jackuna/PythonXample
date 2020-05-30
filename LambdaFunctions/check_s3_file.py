@@ -2,7 +2,7 @@ from boto3 import resource, client
 import botocore
 from datetime import datetime
 
-SNS_TOPIC_ARN = 'arn:aws:sns:ap-south-1:387650023977:mySNSTopic'
+SNS_TOPIC_ARN = 'arn:aws:sns:ap-south-1:387900023977:mySNSTopic'
 
 def lambda_handler(event, context):
     
@@ -29,18 +29,25 @@ def lambda_handler(event, context):
         SOURCE_BUCKET_NAME = event["bucket_name"]
         FILE_TYPE = event['fileType']
         
-        if event["bucket_sub_directory"] == 'False':
+        if FILE_PREFIX_DIRECTORY == 'False':
             
-            FILE_NAME_WITH_DIRECTORY = FILE_SUFFIX
+            if FILE_TYPE == 'daily':
+                FILE_NAME = File_PREFIX_DATE+FILE_SUFFIX
+                FILE_NAME_WITH_DIRECTORY = FILE_NAME
+            
+            else:
+                FILE_NAME = FILE_SUFFIX
+                FILE_NAME_WITH_DIRECTORY = FILE_NAME
+            
         else:
-            FILE_NAME_WITH_DIRECTORY = FILE_PREFIX_DIRECTORY+File_PREFIX_DATE+FILE_SUFFIX
-
-        if FILE_TYPE == 'daily':
-            FILE_NAME = File_PREFIX_DATE+FILE_SUFFIX
-        else:
-            FILE_NAME = FILE_SUFFIX
-
-        
+            if FILE_TYPE == 'daily':
+                FILE_NAME = File_PREFIX_DATE+FILE_SUFFIX
+                FILE_NAME_WITH_DIRECTORY = FILE_PREFIX_DIRECTORY+FILE_NAME
+            
+            else:
+                FILE_NAME = FILE_SUFFIX
+                FILE_NAME_WITH_DIRECTORY = FILE_PREFIX_DIRECTORY+FILE_NAME
+                
 
     def check_file_existance():
         
